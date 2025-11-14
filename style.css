@@ -1,0 +1,490 @@
+:root {
+    --primary-color: #9b111e; /* Cor principal */
+    --secondary-color: #ffffff; /* Cor secundária */
+    --background-color: #f5f5f5;
+    --text-color: #000000;
+    --third-color: #d4d4d4;
+    --notification-color: #ADDDF8
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f4f4f4;
+    width: 100%; 
+    height: 100vh;
+}
+
+main {
+    height: 90%;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main_home {
+    height: 90%;
+    background-color: var(--background-color);
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+footer {
+    height: 5%;
+    background-color: var(--background-color);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginArea {
+    height: 100%;
+    width: 100%;
+    background-color: var(--secondary-color);
+    border-radius: 75px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.area1 {
+    margin-top: 5%;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.area2 {
+    width: 100%;
+    height: 100%;
+}
+
+.team {    
+    height: 100%;
+}
+
+.login {
+    margin: 0px 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% 10% 1fr 1fr 1fr 1fr 1fr 1fr 15%;
+}
+
+.register {
+    margin: 0px 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% 10% 1fr 1fr 5% 1fr 1fr 15%;
+}
+
+.kuka {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    margin-left: 8%
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input input {
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 15px;
+    font-size: 100%;
+}
+
+.input:active {
+    border-color:  #a7a7a7;
+}
+
+.confirm {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+}
+
+.confirmLogin {
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr;
+}
+
+.loginConfirm {
+    grid-column: span 2;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    top: 5%;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.registerConfirm {
+    grid-column: span 2;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    top: 5%;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.politic {
+    display: flex;
+    flex-direction: row;
+    grid-column: span 2;
+    align-items: start;
+    justify-content: start;
+    margin: 5px;
+}
+
+.checkbox {
+    position: relative;
+    top: 2%;
+}
+
+.labelpolitic {
+    display: flex;
+    margin-left: 5px;
+    user-select: none;
+}
+
+.ou {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginButton {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: end;
+}
+
+.loginButton p {
+    margin: 0px 2px;
+}
+
+.loginText {
+    color: aqua;
+    cursor: pointer;
+    user-select: none;
+}
+
+.loginText:hover {
+    color:rgb(0, 158, 158);
+    cursor: pointer;
+}
+
+.loginText:active {
+    color:rgb(0, 37, 37);
+    cursor: pointer;
+}
+
+/* ----------------------- Pedidos ----------------------- */
+
+header {
+    height: 10%;
+    font-size: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 15px 20px -10px, rgba(0, 0, 0, 0.04) 0px 5px 5px -10px;
+    position: relative;
+    z-index: 10;
+    border-radius: 0% 0% 50px 50px;
+}
+
+.user {
+    width: auto;
+    height: 50%;
+    position: absolute;
+    right: 40px;
+    cursor: pointer;
+}
+
+.headLinks {
+    font-size:250%;
+    margin: 0px 0.5%;
+    text-decoration: underline;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+mainPedidos {
+    height:90%;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pedidos {
+    background-color: var(--secondary-color);
+    width: 55%;
+    height: 70%;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: 1fr;
+}
+
+.formPin {
+    display: grid;
+    grid-template-columns: ;
+    grid-template-rows: 1fr 3fr repeat(2, 1fr);
+}
+
+.switchButton {
+}
+
+.switch {
+  --_switch-bg-clr: #7e212b;
+  --_switch-padding: 4px; /* padding around button*/
+  --_slider-bg-clr: #9b111e; /* slider color unchecked */
+  --_slider-bg-clr-on: #9b111e; /* slider color checked */
+  --_slider-txt-clr: #ffffff;
+  --_label-padding: 1rem 2rem; /* padding around the labels -  this gives the switch it's global width and height */
+  --_switch-easing: cubic-bezier(
+    0.47,
+    1.64,
+    0.41,
+    0.8
+  ); /* easing on toggle switch */
+  color: white;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  isolation: isolate;
+}
+
+.switch input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.switch > span {
+  display: grid;
+  place-content: center;
+  transition: opacity 300ms ease-in-out 150ms;
+  padding: var(--_label-padding);
+}
+.switch::before,
+.switch::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  transition: inset 150ms ease-in-out;
+}
+/* switch slider */
+.switch::before {
+  background-color: var(--_slider-bg-clr);
+  inset: var(--_switch-padding) 50% var(--_switch-padding)
+    var(--_switch-padding);
+  transition:
+    inset 500ms var(--_switch-easing),
+    background-color 500ms ease-in-out;
+  z-index: -1;
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.3),
+    0 1px rgba(255, 255, 255, 0.3);
+}
+/* switch bg color */
+.switch::after {
+  background-color: var(--_switch-bg-clr);
+  inset: 0;
+  z-index: -2;
+}
+/* switch hover & focus */
+.switch:focus-within::after {
+  inset: -0.25rem;
+}
+.switch:has(input:checked):hover > span:first-of-type,
+.switch:has(input:not(:checked)):hover > span:last-of-type {
+  opacity: 1;
+  transition-delay: 0ms;
+  transition-duration: 100ms;
+}
+/* switch hover */
+.switch:has(input:checked):hover::before {
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    45%;
+}
+.switch:has(input:not(:checked)):hover::before {
+  inset: var(--_switch-padding) 45% var(--_switch-padding)
+    var(--_switch-padding);
+}
+/* checked - move slider to right */
+.switch:has(input:checked)::before {
+  background-color: var(--_slider-bg-clr-on);
+  inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
+    50%;
+}
+/* checked - set opacity */
+.switch > span:last-of-type,
+.switch > input:checked + span:first-of-type {
+  opacity: 0.75;
+}
+.switch > input:checked ~ span:last-of-type {
+  opacity: 1;
+}
+
+.pinChoice {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+ * 1. CONTAINER PRINCIPAL (pinChoice)
+ * Aplica espaçamento vertical e garante que o label não empurre o select.
+ */
+.pinChoice {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px; /* Aumentei o padding para dar mais ar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra mais visível */
+    max-width: 400px; 
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pinChoice h3 {
+    font-family: sans-serif;
+    font-size: 1.3em;
+    color: #333333;
+    text-align: center; /* Centraliza o título */
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/*
+ * 2. WRAPPER DE CADA LINHA (select-wrapper)
+ * Garante alinhamento horizontal perfeito.
+ */
+.select-wrapper {
+    display: flex; /* Alinha label e select lado a lado */
+    align-items: center; 
+    gap: 15px; /* Espaço entre label e select */
+    position: relative;
+    margin-bottom: 12px; /* Adiciona espaçamento vertical entre os campos */
+}
+
+/*
+ * 3. LABEL (Peça 1, Peça 2, etc.)
+ * Define uma largura fixa para que os selects comecem todos no mesmo ponto.
+ */
+.select-wrapper label {
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #555555;
+    /* Define uma largura fixa para alinhar os selects */
+    width: 70px; 
+    text-align: right; /* Alinha o texto do label à direita */
+    margin-bottom: 0; /* Remove margem desnecessária */
+}
+
+/*
+ * 4. SELECT (A Caixa de Seleção)
+ * Faz com que a caixa ocupe todo o espaço restante, garantindo larguras iguais.
+ */
+.select-wrapper select {
+    flex-grow: 1; /* Ocupa todo o espaço restante, garantindo largura igual para todos os selects */
+    width: auto; /* Anula o 100% */
+    
+    /* Estilos Visuais */
+    padding: 8px 30px 8px 12px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    
+    /* Remoção da Seta Nativa */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.select-wrapper select:focus {
+    border-color: #888888;
+    box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.15); 
+    outline: none;
+}
+
+/*
+ * 5. SETA CUSTOMIZADA (Melhora o visual)
+ */
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 12px; 
+    /* Ajusta a posição da seta para que ela fique no final do select */
+    transform: translateY(-50%); 
+    pointer-events: none;
+    color: #999999;
+    font-size: 10px;
+}
+
+.confirmPedido {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.buttonPedido {
+    padding: 10px 130px;
+    margin: 15px;
+    background-color: #7e212b;
+    border:#000000 solid 2px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.buttonPedido:hover {
+    
+}

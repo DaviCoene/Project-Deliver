@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Deliver</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <p class="headLinks">Home</p>
+        <p class="headLinks">Pedidos</p>
+        <p class="headLinks">Histórico</p>
+        <img class="user" src="./public/user.png" alt="usuario">
+    </header>
+    <mainPedidos>
+        <div class="pedidos">
+            <img class="pin" src="" alt="">
+            <div class="formPin">
+                <div class="switchButton center">
+                    <label for="filter" class="switch" aria-label="Toggle Filter">
+                    <input type="checkbox" id="filter" />
+                    <span>1 Pino</span>
+                    <span>2 Pinos</span>
+                    </label>
+                </div>
+                <div class="pinChoice center">
+                    <h3>Pino 1</h3>
+                    
+                    <div class="select-wrapper">
+                        <label for="peca1">Peça 1:</label>
+                        <select id="peca1" name="peca1_selected">
+                            <option value="" disabled selected>-- Selecione uma opção --</option>
+                            <option value="Circulo">Circulo</option>
+                            <option value="Quadrado">Quadrado</option>
+                            <option value="Hexagono">Hexagono</option>
+                        </select>
+                    </div>
+
+                    <div class="select-wrapper">
+                        <label for="peca2">Peça 2:</label>
+                        <select id="peca2" name="peca2_selected">
+                            <option value="" disabled selected>-- Selecione uma opção --</option>
+                            <option value="Circulo">Circulo</option>
+                            <option value="Quadrado">Quadrado</option>
+                            <option value="Hexagono">Hexagono</option>
+                        </select>
+                    </div>
+
+                    <div class="select-wrapper">
+                        <label for="peca3">Peça 3:</label>
+                        <select id="peca3" name="peca3_selected">
+                            <option value="" disabled selected>-- Selecione uma opção --</option>
+                            <option value="Circulo">Circulo</option>
+                            <option value="Quadrado">Quadrado</option>
+                            <option value="Hexagono">Hexagono</option>
+                        </select>
+                    </div>
+                </div>
+                <span></span>
+                <div class="confirmPedido">
+                    <div class="buttonPedido">
+                        Fazer Pedido
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </mainPedidos>
+</body>
+</html>
