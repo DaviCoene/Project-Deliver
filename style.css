@@ -1,16 +1,20 @@
 :root {
-    --primary-color: #9b111e; /* Cor principal */
-    --secondary-color: #ffffff; /* Cor secundária */
-    --background-color: #f5f5f5;
-    --text-color: #000000;
+    --primary-color: #6F0825;
+    --cinza-border: #262626;
+    --background-color: #141414;
+    --text-color: #ffffff;
     --third-color: #d4d4d4;
-    --notification-color: #ADDDF8
+    --notification-color: #ADDDF8;
+    --link-color: #4285F4;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text-color);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
 }
 
 body {
@@ -31,11 +35,12 @@ main {
     justify-content: center;
 }
 
-main_home {
-    height: 90%;
+mainLogin {
+    height: 100%;
     background-color: var(--background-color);
-    display: grid;
-    grid-template-columns: 40% 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
@@ -52,7 +57,7 @@ footer {
 .loginArea {
     height: 100%;
     width: 100%;
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
     border-radius: 75px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -61,7 +66,6 @@ footer {
 }
 
 .area1 {
-    margin-top: 5%;
     width: 80%;
     height: 100%;
     display: flex;
@@ -77,6 +81,23 @@ footer {
     height: 100%;
 }
 
+.imgLogin {
+    z-index: 10;
+    width: 45%;
+    height: 100%;
+    position: absolute;
+    object-fit:cover;
+    margin-left: 55%;
+    border-radius: 30px 0px 0px 30px;
+
+    transition: margin-left 1s ease-in-out, border-radius 1s ease-in-out;
+}
+
+.animationLogin {
+    margin-left: 0px;
+    border-radius: 0px 30px 30px 0px;
+}
+
 .login {
     margin: 0px 150px;
     display: grid;
@@ -88,7 +109,7 @@ footer {
     margin: 0px 150px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 15% 10% 1fr 1fr 5% 1fr 1fr 15%;
+    grid-template-rows: 15% 10% 6% 1fr 1fr 6% 5% 1fr 1fr 15%;
 }
 
 .kuka {
@@ -98,20 +119,48 @@ footer {
     margin-left: 8%
 }
 
+.LoginTitle {
+    font-size: 200%;
+}
+
+.loginAreaTitle {
+    display: flex;
+    flex-direction: column;
+}
+
 .input {
     display: flex;
     flex-direction: column;
 }
 
-.input input {
-    padding: 10px;
-    border: 1px solid #d4d4d4;
-    border-radius: 15px;
-    font-size: 100%;
+.inputRegister {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.input:active {
-    border-color:  #a7a7a7;
+.input input {
+    padding: 10px;
+    border: 1px solid #262626;
+    border-radius: 15px;
+    font-size: 100%;
+    background-color: var(--background-color);
+}
+
+.input input:active {
+    border-color:  #3f3c3c;
+}
+
+.inputRegister input {
+    padding: 10px;
+    border: 1px solid #262626;
+    border-radius: 15px;
+    font-size: 100%;
+    background-color: var(--background-color);
+}
+
+.inputRegister input:active {
+    border-color:  #3f3c3c;
 }
 
 .confirm {
@@ -120,50 +169,86 @@ footer {
     grid-template-rows: 1fr 1fr;
 }
 
-.confirmLogin {
-    display: grid;
-    grid-template-columns: 1fr ;
-    grid-template-rows: 1fr;
+.loginConfirm,
+.registerConfirm {
+    /* Propriedades Visuais */
+    grid-column: span 2; 
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    
+    /* Remoção da position:relative e top: 5%; */
+    
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    
+    /* Usabilidade */
+    cursor: pointer;
+    border: none; /* Garante que não haja bordas inesperadas */
+    outline: none;
+    
+    /* ANIMAÇÃO: Adiciona uma transição suave para as mudanças de cor */
+    transition: background-color 0.3s ease-in-out, transform 0.1s ease;
 }
 
 .loginConfirm {
-    grid-column: span 2;
-    border-radius: 10px;
-    height: 100%;
-    position: relative;
-    top: 5%;
-    background-color: var(--primary-color);
-    color: var(--background-color);
+    height: 80%;
 }
 
-.registerConfirm {
-    grid-column: span 2;
-    border-radius: 10px;
+/* 🖱️ Efeito ao Passar o Mouse (HOVER) */
+.loginConfirm:hover,
+.registerConfirm:hover {
+    /* Escurece a cor primária para feedback (o valor #5f061d é ligeiramente mais escuro que #6F0825) */
+    background-color: #5f061d; 
+}
+
+/* 👇 Efeito ao Clicar (ACTIVE) */
+.loginConfirm:active,
+.registerConfirm:active {
+    /* Efeito de "pressionar" o botão, movendo-o levemente para baixo */
+    transform: translateY(1px);
+}
+
+/* 🖼️ AJUSTE PARA O CONFIRM LOGIN (Para centralizar melhor) */
+.confirmLogin {
+    display: flex; /* Mudamos o grid para flex para centralizar o botão verticalmente */
+    align-items: center; /* Centraliza verticalmente o botão */
+    justify-content: center; /* Centraliza horizontalmente o botão */
+    width: 100%;
     height: 100%;
-    position: relative;
-    top: 5%;
-    background-color: var(--primary-color);
-    color: var(--background-color);
+}
+
+/* 🖼️ AJUSTE PARA O CONFIRM REGISTER (Para centralizar melhor) */
+.confirm {
+    /* Adicionamos o padding para dar o espaço de cima */
+    padding-top: 5%;
 }
 
 .politic {
     display: flex;
     flex-direction: row;
     grid-column: span 2;
-    align-items: start;
+    align-items: center;
     justify-content: start;
     margin: 5px;
 }
 
 .checkbox {
-    position: relative;
-    top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .labelpolitic {
     display: flex;
     margin-left: 5px;
     user-select: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .ou {
@@ -176,7 +261,7 @@ footer {
     display: flex;
     width: 100%;
     justify-content: center;
-    align-items: end;
+    align-items: start;
 }
 
 .loginButton p {
@@ -184,7 +269,7 @@ footer {
 }
 
 .loginText {
-    color: aqua;
+    color: var(--link-color);
     cursor: pointer;
     user-select: none;
 }
@@ -250,11 +335,7 @@ mainPedidos {
 
 .formPin {
     display: grid;
-    grid-template-columns: ;
     grid-template-rows: 1fr 3fr repeat(2, 1fr);
-}
-
-.switchButton {
 }
 
 .switch {
