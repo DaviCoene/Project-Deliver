@@ -219,7 +219,7 @@ function renderizarPeca3D(idPino, nomeSlot, tipoPeca) {
 
         gsap.to(novaPeca.position, {
             y: yFinal, 
-            duration: 2.2, // Lento e suave
+            duration: 2.2, 
             ease: "back.out(0.15)", 
             delay: 0.05
         });
@@ -300,7 +300,9 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 window.addEventListener('click', (event) => {
-    if (!modoDoisPinos) return;
+    // Só permite clicar se tiver 2 pinos E se não estiver animando troca de pinos
+    // (switchFilter.disabled é nossa flag de "animando")
+    if (!modoDoisPinos || (switchFilter && switchFilter.disabled)) return;
 
     const rect = renderer.domElement.getBoundingClientRect();
     mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -322,40 +324,51 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Evento do Switch (Entrada e Saída dos Pinos)
+// ==========================================
+// CORREÇÃO DO BUG: TRAVA NO BOTÃO DE TROCA
+// ==========================================
 if (switchFilter) {
     switchFilter.addEventListener('change', (e) => {
+        // 1. TRAVA IMEDIATAMENTE PARA NÃO CLICAR DE NOVO
+        switchFilter.disabled = true;
+        
         modoDoisPinos = e.target.checked;
+        
         if (modoDoisPinos) {
-            // MODO 2 PINOS: Abre espaço
+            // --- INDO PARA 2 PINOS ---
             gsap.to(pino1.position, { x: -4, duration: 1, ease: "power2.inOut" });
             gsap.to(seletorAtivo.position, { x: -4, duration: 1, ease: "power2.inOut" });
             
             pino2.visible = true;
             pino2.position.set(4, 15, 0); 
-            gsap.to(pino2.position, { y: 0, duration: 2.0, ease: "back.out(0.2)", delay: 0.2 });
+            
+            gsap.to(pino2.position, { 
+                y: 0, 
+                duration: 2.0, 
+                ease: "back.out(0.2)", 
+                delay: 0.2,
+                // DESTRAVA SÓ NO FINAL DA ANIMAÇÃO
+                onComplete: () => { switchFilter.disabled = false; }
+            });
 
         } else {
-            // MODO 1 PINO: Volta ao normal
+            // --- VOLTANDO PARA 1 PINO ---
             pinoAtivo = 1;
             atualizarInterfaceUsuario();
             
-            // 1. O seletor volta pro meio junto com o pino 1
-            // Delay de 0.2s para esperar o pino 2 sair do caminho
             gsap.to(seletorAtivo.position, { x: 0, duration: 1, ease: "power2.inOut", delay: 0.2 });
-
-            // 2. Pino 1 volta pro meio (com delay para não bater no 2)
             gsap.to(pino1.position, { x: 0, duration: 1, ease: "power2.inOut", delay: 0.2 });
             
-            // 3. Pino 2 sobe e VAI PRA DIREITA (x: 8) para fugir do Pino 1
             gsap.to(pino2.position, { 
                 y: 20, 
-                x: 8, // <--- TRUQUE AQUI: Sai para o lado para não colidir
+                x: 8, 
                 duration: 1.2, 
                 ease: "power2.in",
                 onComplete: () => { 
                     pino2.visible = false; 
-                    pino2.position.x = 4; // Reseta posição original
+                    pino2.position.x = 4;
+                    // DESTRAVA SÓ NO FINAL DA ANIMAÇÃO
+                    switchFilter.disabled = false;
                 } 
             });
         }
@@ -376,7 +389,6 @@ if (btnLimpar) {
                 const peca = slotObj.children[0];
                 gsap.killTweensOf(peca.position);
 
-                // Animação de Limpeza Lenta
                 gsap.to(peca.position, {
                     y: peca.position.y + 15, 
                     duration: 1.2, 
