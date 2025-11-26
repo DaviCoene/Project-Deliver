@@ -1,58 +1,128 @@
-import bcrypt from "bcryptjs";
-import { UserRepository } from "../repositories/userRepository.js";
-import { UserDTO } from "../dtos/userDTO.js";
+import { UserRepository } from '../repositories/userRepository.js';
+import { UserDTO } from '../dtos/userDTO.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-const { hash } = bcrypt;
-
-export class UserService{
-    constructor(){
-        this.UserRepository = new UserRepository();
+export class UserService {
+    constructor() {
+        this.userRepository = new UserRepository();
     }
 
+    // ============================================================
+    // =====================   AUTENTICAÇÃO   ======================
+    // ============================================================
 
-    register = async (userData) => {
-        //implementar o findByEmail
-        const userExists = await this.UserRepository.findByEmail(userData.email)
-
-        if (userExists){
-            throw new Error("Usuario ja cadastrado")
-
+    /**
+     * LOGIN
+     * Fluxo:
+     * 1. Buscar usuário pelo email
+     * 2. Validar senha com bcrypt
+     * 3. Gerar JWT (8h)
+     * 4. Retornar token + usuário formatado
+     */
+    async login(email, password) {
+        // (1) Busca usuário pelo email
+        const user = await this.userRepository.findByEmail(email);
+        if (!user) {
+            throw new Error("Email ou senha inválidos.");
         }
-        const passwordHash = await hash(userData.password, 8)
-        const userToCreate = {
-            name: userData.name,
-            email: userData.email,
-            password: passwordHash,
+
+        // (2) Verifica a senha
+        const isCorrect = await bcrypt.compare(password, user.password);
+        if (!isCorrect) {
+            throw new Error("Email ou senha inválidos.");
         }
-        const createdUser = await this.UserRepository.create(userToCreate);
-        return new UserDTO(createdUser)
+
+        // (3) Gera token JWT
+        const payload = {
+            id: user._id,
+            email: user.email
+        };
+
+        if (!process.env.JWT_SECRET) {
+            throw new Error("JWT_SECRET não está configurado no .env.");
+        }
+
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "8h"
+        });
+
+        // (4) Retorna token + DTO
+        return {
+            token,
+            user: new UserDTO(user)
+        };
     }
 
-    getAllUser = async () => {
-        return await this.UserRepository.findAll();
-    }
-    getUserById = async (id) => {
-        const foundUser = await this.UserRepository.findById(id);
-        if (!foundUser){
-            throw new Error("User não encontrado!")
+    // ============================================================
+    // =======================   REGISTRO   =========================
+    // ============================================================
+
+    async register(data) {
+        const { email } = data;
+
+        // Verifica se email já existe
+        const exists = await this.userRepository.findByEmail(email);
+        if (exists) {
+            throw new Error("Este email já está cadastrado.");
         }
-        return foundUser
-    }
-    updateUser = async (id, UserData) => {
-        const updatedUser = await this.UserRepository.update(id, UserData);
-        if (!updatedUser){
-            throw new Error("Autor não encontrado!")
-        }
-        return updatedUser
-    }
-    deleteUser = async (id) => {
-        const deleteUser = await this.UserRepository.delete(id);
-        if (!deleteUser){
-            throw new Error("Autor não encontrado!")
-        }
-        return deleteUser
+
+        // Criação (hash é feito no model pre-save)
+        const createdUser = await this.userRepository.create(data);
+
+        return new UserDTO(createdUser);
     }
 
+    // ============================================================
+    // ====================   LISTAR TODOS   ========================
+    // ============================================================
 
+    async getAllUser() {
+        const users = await this.userRepository.findAll();
+        return users.map(u => new UserDTO(u));
+    }
 
+    // ============================================================
+    // =====================   BUSCAR POR ID   =====================
+    // ============================================================
+
+    async getUserById(id) {
+        const user = await this.userRepository.findById(id);
+        if (!user) {
+            throw new Error("Usuário não encontrado.");
+        }
+        return new UserDTO(user);
+    }
+
+    // ============================================================
+    // ======================   ATUALIZAR   ========================
+    // ============================================================
+
+    async updateUser(id, data) {
+
+        // Se a senha foi enviada → rehash
+        if (data.password) {
+            const salt = await bcrypt.genSalt(10);
+            data.password = await bcrypt.hash(data.password, salt);
+        }
+
+        const updated = await this.userRepository.update(id, data);
+        if (!updated) {
+            throw new Error("Usuário não encontrado.");
+        }
+
+        return new UserDTO(updated);
+    }
+
+    // ============================================================
+    // =======================   DELETAR   ==========================
+    // ============================================================
+
+    async deleteUser(id) {
+        const deleted = await this.userRepository.delete(id);
+        if (!deleted) {
+            throw new Error("Usuário não encontrado.");
+        }
+        return true;
+    }
 }

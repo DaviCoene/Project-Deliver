@@ -11,13 +11,154 @@
 </head>
 <body>
     <header>
-        <div class="title">Entregador Bosch</div>
+        <div class="icon">        
+        </div>
+        <div class="links">
+            <a href="home.html" class="headLinks activeLink">Home</a>
+            <a href="aboutUs.html" class="headLinks">Sobre Nós</a>
+            <a href="historic.html" class="headLinks">Histórico</a>
+        </div>
+        <div class="pedidosAndUser">
+            <div class="headerButton">
+                <button class="bubbles" onclick="paginaPedido()">
+                        <span class="text">Fazer Pedido</span>
+                </button>
+            </div>
+                
+            <div class="user-container"></div>
+                <img class="user" src="./public/user.png" alt="usuario"> 
+            
+                <span id="userEmailDisplay" class="tooltip-text">Carregando...</span>
+            </div>
+</div></img>
+            
+        </div>
     </header>
     <main_home>
-
+        <div class="topHome">
+            <div class="principalHome">
+                <div class="principal1">
+                    <h4 class="limited65">Você monta no site. A máquina monta por você.</h4>
+                    <h3 class="limited65">Projeto Integrador</h3>
+                    <h3 class="limited65">Nome do Projeto</h3>
+                    <p>O (Nome) combina um site intuitivo com uma esteira automatizada com garra. O usuário monta o pino online, escolhe a ordem, envia o pedido e a máquina monta exatamente como foi configurado.</p>
+                </div>
+                <div class="principal2">
+                    <div class="subprincipal">
+                        <div class="separator">
+                            <h3>30</h3>
+                            <h3 class="red">+</h3>
+                        </div>
+                        <p>Combinações diferentes</p>
+                    </div>
+                    <div class="subprincipal">
+                        <div class="separator">
+                            <h3>100</h3>
+                            <h3 class="red">%</h3>
+                        </div>
+                        <p>Montagem automatizada</p>
+                    </div>
+                    <div class="subprincipal">
+                        <div class="separator">
+                            <h3>5</h3>
+                            <h3 class="red">s</h3>
+                        </div>
+                        <p>Atualização de fila</p>
+                    </div>
+                </div>
+            </div>
+            <div class="imgHome">
+                <img src="./public/roboHome.png" alt="Braço Robótico">
+            </div>
+        </div>
+        <div class="bottomHome">
+            <div class="subprincipal2 border-right">
+                <img src="./public/manyUser.png" alt="Persons">
+                <h3>Sobre Nós</h3>
+                <p>Nos conheça!</p>
+                <p class="margin-top10px">Conheça nosso time e o objetivo do projeto.</p>
+            </div>
+            <div class="subprincipal2">
+                <img src="./public/historic.png" alt="Persons">
+                <h3>Histórico de Pedidos</h3>
+                <p>Progresso em tempo real</p>
+                <p class="margin-top10px">Acompanhe o andamento e o tempo restante.</p>
+            </div>
+            <div class="subprincipal2 border-left">
+                <img src="./public/pencil.png" alt="Persons">
+                <h3>Fazer Pedido</h3>
+                <p>Monte do seu jeito</p>
+                <p class="margin-top10px">Escolha formas, ordem e finalize o pedido.</p>
+            </div>
+        </div>
     </main_home>
-    <footer>
-
-    </footer>
+    <main_home2>
+        <div class="toolsText">
+            <div class="toolsTextSeparator">
+                <img src="./public/stars.png" alt="Estrelas">
+                <h3>Ferramentas utilizadas</h3>
+                <p>Essas são as ferramentas que apoiaram o desenvolvimento do nosso projeto, desde o design até a automação da esteira.</p>
+            </div>
+            <div class="tools borda-cinza-6px">
+                <div class="ferramenta borda-cinza-1px-right borda-cinza-1px-bottom">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/VSCode.svg" alt="VSCode">
+                        </div>
+                        <h4>Visual Studio</h4>
+                    </div>
+                    <p>Ambiente onde desenvolvemos todo o código do site.</p>
+                </div>
+                <div class="ferramenta borda-cinza-1px-bottom">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/Figma.svg" alt="Figma">
+                        </div>
+                        <h4>Figma</h4>
+                    </div>
+                    <p>Criamos o design das telas e a interface do usuário.</p>
+                </div>
+                <div class="ferramenta borda-cinza-1px-right borda-cinza-1px-bottom">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/Node-Red.svg" alt="Node-RED">
+                        </div>
+                        <h4>Node-RED</h4>
+                    </div>
+                    <p>Fluxos lógicos para comunicação e controle entre sistema e máquina.</p>
+                </div>
+                <div class="ferramenta borda-cinza-1px-bottom">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/Siemens.svg" alt="TIA Portal">
+                        </div>
+                        <h4>TIA Portal</h4>
+                    </div>
+                    <p>Programação e integração da automação da esteira.</p>
+                </div>
+                <div class="ferramenta borda-cinza-1px-right">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/Miro.svg" alt="Miro">
+                        </div>
+                        <h4>Miro</h4>
+                    </div>
+                    <p>Organização das ideias, planejamento e fluxos do projeto.</p>
+                </div>
+                <div class="ferramenta">
+                    <div class="toolTop">
+                        <div class="toolLogo">
+                            <img src="./public/Google Fonts.svg" alt="Google Fonts">
+                        </div>
+                        <h4>Google Fonts</h4>
+                    </div>
+                    <p>Fontes e ícones usados para deixar o visual do site mais limpo e moderno.</p>
+                </div>
+            </div>
+        </div>
+        
+    </main_home2>
+    <script src="script.js"></script>
+    <script src="Scripts/email.js"></script>
 </body>
 </html>
