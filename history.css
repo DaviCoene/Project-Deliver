@@ -1,8 +1,8 @@
 :root {
-    --background: #121212;
-    --header: #1E1E1E;
+    --background: #111111;
+    --header: #111111;
     --outline: #3a3a3a;
-    --text: #98989a;
+    --text: #9B9B9B;
     --rascunho1: #202022;
     --rascunho2: #333338;
     --emfila1: #1E1E1E;
@@ -23,7 +23,7 @@
     --hexagon2: #4ADE80;
 }
 body {
-    font-size: 12px;
+    font-size: 14px;
 }
 .screen {
     background-color: var(--background);
@@ -33,10 +33,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 .container1 {
     width: 50%;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     padding: 80px 80px 80px 200px;
     border-right-width: 1px;
@@ -56,9 +57,16 @@ body {
     border-bottom-color: var(--outline);
 }
 .subcontainer2 {
-    padding: 80px 200px 200px 80px;
+    padding: 80px 200px 80px 80px;
     width: 100%;
-    height: 100%;
+    height: 65%;
+}
+.table-scroll-wrapper-1 {
+    overflow-y: auto;
+}
+.table-scroll-wrapper-2 {
+    max-height: 100%;
+    overflow-y: auto;
 }
 .title {
     margin-bottom: 46px;
@@ -71,23 +79,13 @@ p {
     font-size: 16px;
     color: var(--text);
 }
-.table-scroll-wrapper-1 {
-    max-height: 70vh;
-    overflow-y: auto;
-    margin-bottom: 200px;
-}
-.table-scroll-wrapper-2 {
-    max-height: 50vh;
-    overflow-y: auto;
-    margin-bottom: 200px;
-}
 #historyTable,
 #queryTable {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 6px;
-    overflow: hidden;
+    overflow-y: auto;
     border: 1px solid var(--outline);
 }
 #historyTable thead th,

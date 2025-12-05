@@ -139,7 +139,7 @@ async function carregarDados() {
 
             // -- Tabela QUERY (Exemplo: Apenas as 'Pendente' ou 'Em Rota') --
             // Você pode ajustar essa lógica. Aqui coloquei as Pendentes.
-            if (entrega.status === 'Pendente' || entrega.status === 'Em Rota') {
+            if (entrega.status === 'Pendente' || entrega.status === 'Em Rota'|| entrega.status === 'Producao') {
                 // Clona a linha ou cria uma nova com layout diferente se precisar
                 const rowQuery = createRow(dadosFormatados);
                 

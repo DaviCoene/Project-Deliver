@@ -2,7 +2,14 @@
 
 tableBody = document.querySelector('#historyTable tbody');
 
-let orderData = [];
+let orderData = [
+    { id: 1654, status: 'Concluído', itens: ['square', 'hexagon', 'circle'], cliente: 'Nycolas Prado' },
+    { id: 1655, status: 'Em Fila', itens: ['circle', 'hexagon', 'square', 'separator', 'square', 'circle', 'hexagon'], cliente: 'Diego Kaviski' },
+    { id: 1656, status: 'Enviado', itens: ['square', 'circle', 'hexagon'], cliente: 'Guilherme Alquieri' },
+    { id: 1657, status: 'Rascunho', itens: ['hexagon', 'circle', 'square'], cliente: 'Juliano Lesinski' },
+    { id: 1658, status: 'Em Produção', itens: ['hexagon', 'circle', 'square'], cliente: 'Isabella Duarte' },
+    { id: 1658, status: 'Cancelado', itens: ['hexagon', 'circle', 'square'], cliente: 'Ana Queiroz' },
+];
 
 function normalizeStatus(status){
     return status.toLowerCase().replace(/\s/g, '').replace('í','i').replace('ã','a').replace('ç','c');
@@ -57,7 +64,11 @@ orderData.forEach(data => {
 const queryTableBody = document.querySelector('#queryTable tbody');
 
 let queryData = [
-
+    { id: 1001, service: 'Prioridade', itens: ['circle', 'hexagon', 'square'] },
+    { id: 1002, service: 'Express', itens: ['hexagon', 'square', 'circle']},
+    { id: 1003, service: 'Padrão', itens: ['circle', 'hexagon', 'square', 'separator', 'hexagon', 'square', 'circle']},
+    { id: 1004, service: 'Prioridade', itens: ['square', 'hexagon','circle']},
+    { id: 1005, service: 'Express', itens: ['hexagon', 'circle', 'square']},
 ];
 
 function normalizeService(service) {
